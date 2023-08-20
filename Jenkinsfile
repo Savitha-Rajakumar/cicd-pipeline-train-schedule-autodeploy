@@ -34,7 +34,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login2') {
                         app.push("${env.BUILD_NUMBER}")
-                        app.push()
+                        app.push("01")
                     }
                 }
             }
