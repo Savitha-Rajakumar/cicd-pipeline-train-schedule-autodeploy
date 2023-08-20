@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 script {
-                    dwithDockerRegistry([ credentialsId: "docker_hub_login2", url: "" ]) {
+                    withDockerRegistry([ credentialsId: "docker_hub_login2", url: "" ]) {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
