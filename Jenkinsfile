@@ -46,14 +46,14 @@ pipeline {
                 CANARY_REPLICAS = 1
             }
             steps {
-                withKubeConfig([credentialsId: 'jenkins-deploy', serverUrl: 'https://172.31.5.104:6443']) {
+                withKubeConfig([credentialsId: 'jenkins-deploy', serverUrl: 'https://172.31.0.122:6443']) {
                 sh 'kubectl apply -f train-schedule-kube-canary.yml -n jenkins-deploy'
                 }
             }
         }
        stage('DeployToProduction') {
             steps {
-                withKubeConfig([credentialsId: 'jenkins-deploy', serverUrl: 'https://172.31.5.104:6443']) {
+                withKubeConfig([credentialsId: 'jenkins-deploy', serverUrl: 'https://172.31.0.122:6443']) {
                 sh 'kubectl apply -f train-schedule-kube.yml -n jenkins-deploy'
                 }
             }
