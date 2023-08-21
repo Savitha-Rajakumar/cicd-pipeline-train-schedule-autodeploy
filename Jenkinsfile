@@ -40,9 +40,7 @@ pipeline {
         }
          stage('CanaryDeploy') {
             
-            environment { 
-                CANARY_REPLICAS = 1
-            }
+           
             steps {
                 withKubeConfig([credentialsId: 'jenkins-deploy', serverUrl: 'https://172.31.0.122:6443']) {
                 sh 'kubectl apply -f train-schedule-kube-canary.yml -n jenkins-deploy'
